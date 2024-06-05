@@ -57,7 +57,7 @@ func ReverseHttpsProxy(port int, addr, dst, crt, key string) {
 	}
 	h.Transport = InsecureTransport
 	fmt.Printf("Serving at %s:%d\n", addr, port)
-	err := http.ListenAndServeTLS(fmt.Sprintf("localhost:%d", port), crt, key, h)
+	err := http.ListenAndServeTLS(fmt.Sprintf("%s:%d", addr, port), crt, key, h)
 	if err != nil {
 		log.Println("Error:", err)
 	}
